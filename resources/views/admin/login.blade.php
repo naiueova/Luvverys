@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login</title>
+        <title>Login | Admin</title>
         <link href="{{ asset('asset/js/cute-alert/style.css') }}" rel="stylesheet" />
         <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="{{ asset('asset/img/favicon.png)') }}" />

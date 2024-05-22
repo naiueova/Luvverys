@@ -14,11 +14,15 @@
                                 </li>
                                 <li><i class="icofont-envelope"></i> <a
                                         href="mailto:demo@example.com">luvverys@gmail.com</a></li>
-                                <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#">Account</a>
+                                <li class="account_link"> <i class="icofont-user-alt-7"></i><a
+                                        href="#">Account</a>
                                     <ul class="dropdown_account_link">
-                                        <li><a href="{{route('my_account')}}">My Account</a></li>
-                                        <li><a href="{{route('landing-page.auth.login')}}">Login</a></li>
-                                        <li><a href="{{route('contact')}}">Contact</a></li>
+                                        @if (Auth::check())
+                                            <li><a href="{{ route('my_account') }}">My Account</a></li>
+                                            <li><a href="{{ route('account.logout') }}">Logout</a></li>
+                                        @else
+                                            <li><a href="{{ route('account.login') }}">Login</a></li>
+                                        @endif
                                     </ul>
                                 </li>
                             </ul>
@@ -33,16 +37,21 @@
             <div class="col-12">
                 <div class="main_header d-flex justify-content-between align-items-center">
                     <div class="header_logo">
-                        <a class="sticky_none" href="{{route('index')}}"><img src="{{ asset('assets/img/logo/logo.png')}}" alt=""></a>
+                        <a class="sticky_none" href="{{ route('index') }}"><img
+                                src="{{ asset('assets/img/logo/logo.png') }}" alt=""></a>
                     </div>
                     <!--main menu start-->
                     <div class="main_menu d-none d-lg-block">
                         <nav>
                             <ul class="d-flex">
-                                <li><a class=" {{request()->routeIs('index') ? 'active' : ''}}" href="{{route('index')}}">Home</a></li>
-                                <li><a class=" {{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">About</a></li>
-                                <li><a class=" {{request()->routeIs('shop') ? 'active' : ''}}" href="{{route('shop')}}">Shop</a></li>
-                                <li><a class=" {{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">Contact</a></li>
+                                <li><a class=" {{ request()->routeIs('index') ? 'active' : '' }}"
+                                        href="{{ route('index') }}">Home</a></li>
+                                <li><a class=" {{ request()->routeIs('about') ? 'active' : '' }}"
+                                        href="{{ route('about') }}">About</a></li>
+                                <li><a class=" {{ request()->routeIs('shop') ? 'active' : '' }}"
+                                        href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class=" {{ request()->routeIs('contact') ? 'active' : '' }}"
+                                        href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -51,7 +60,8 @@
                         <ul class="d-flex">
                             <li class="header_search"><a href="javascript:void(0)"><i class="pe-7s-search"></i></a>
                             </li>
-                            <li class="header_wishlist"><a href="{{route('wishlist-landing')}}"><i class="pe-7s-like"></i></a></li>
+                            <li class="header_wishlist"><a href="{{ route('wishlist-landing') }}"><i
+                                        class="pe-7s-like"></i></a></li>
                             <li class="shopping_cart"><a href="javascript:void(0)"><i class="pe-7s-shopbag"></i></a>
                                 <span class="item_count">2</span>
                             </li>
@@ -79,14 +89,14 @@
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
                     <div class="welcome_text text-center">
-                        <p>Welcome to Luvverys Bakery Shop</p>
+                        <p>Welcome to Luvverys Bakery</p>
                     </div>
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
-                            <li class="menu-item-has-children active"><a href="{{route('index')}}">Home</a></li>
-                            <li class="menu-item-has-children"><a href="{{route('about')}}">About Us</a></li>
-                            <li class="menu-item-has-children"><a href="{{route('shop')}}">Shop</a></li>
-                            <li class="menu-item-has-children"><a href="{{route('contact')}}">Contact Us</a></li>
+                            <li class="menu-item-has-children active"><a href="{{ route('index') }}">Home</a></li>
+                            <li class="menu-item-has-children"><a href="{{ route('about') }}">About Us</a></li>
+                            <li class="menu-item-has-children"><a href="{{ route('shop') }}">Shop</a></li>
+                            <li class="menu-item-has-children"><a href="{{ route('contact') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,7 +119,8 @@
         </div>
         <div class="cart_item">
             <div class="cart_img">
-                <a href="single-product.html"><img src="{{asset('assets/img/product/product1.png')}}" alt=""></a>
+                <a href="single-product.html"><img src="{{ asset('assets/img/product/product1.png') }}"
+                        alt=""></a>
             </div>
             <div class="cart_info">
                 <a href="single-product.html">Primis In Faucibus</a>
@@ -146,10 +157,10 @@
     </div>
     <div class="mini_cart_footer">
         <div class="cart_button">
-            <a href="{{route('cart')}}">View cart</a>
+            <a href="{{ route('cart') }}">View cart</a>
         </div>
         <div class="cart_button">
-            <a href="{{route('checkout')}}"><i class="fa fa-sign-in"></i> Checkout</a>
+            <a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i> Checkout</a>
         </div>
     </div>
 </div>

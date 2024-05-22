@@ -6,7 +6,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single_shipping d-flex align-items-center">
                         <div class="shipping_icon">
-                            <img src="assets/img/others/shipping1.png" alt="">
+                            <img src="{{asset('assets/img/others/shipping1.webp')}}" style="width: 60px" alt="">
                         </div>
                         <div class="shipping_text">
                             <h3>Free Shipping</h3>
@@ -17,7 +17,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single_shipping d-flex align-items-center">
                         <div class="shipping_icon">
-                            <img src="assets/img/others/shipping2.png" alt="">
+                            <img src="{{asset('assets/img/others/shipping2.webp')}}" style="width: 60px" alt="">
                         </div>
                         <div class="shipping_text">
                             <h3>Card Payments</h3>
@@ -28,7 +28,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single_shipping d-flex align-items-center">
                         <div class="shipping_icon">
-                            <img src="assets/img/others/shipping3.png" alt="">
+                            <img src="{{asset('assets/img/others/shipping3.webp')}}" style="width: 60px" alt="">
                         </div>
                         <div class="shipping_text">
                             <h3>Easy Returns</h3>
@@ -139,7 +139,7 @@
         </div>
         <div class="footer_bottom">
             <div class="copyright_right text-center">
-                <p> © 2021 <a href="index.html"> Bucker.</a> Made with <i class="ion-heart"></i> by
+                <p> © 2024 <a href="{{route('index')}}"> luvverys.</a> Made with <i class="ion-heart"></i> by
                     <a href="https://themeforest.net/user/codecarnival/portfolio">CodeCarnival</a>
                 </p>
             </div>

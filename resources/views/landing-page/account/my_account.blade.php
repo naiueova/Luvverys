@@ -40,7 +40,7 @@
                                 role="tab" aria-controls="account-details" aria-selected="false">Account Details</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="account-logout-tab" href="login-register.html" role="tab"
+                            <a class="nav-link" id="account-logout-tab" href="{{route('account.logout')}}" role="tab"
                                 aria-selected="false">Logout</a>
                         </li>
                     </ul>

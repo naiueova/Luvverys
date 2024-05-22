@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Landing;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -14,26 +15,24 @@ class CartController extends Controller
     public function addCart(Request $request)
     {
         $id = $request->id;
-        dd($id);
-        // $product = \App\Models\Product::find($id);
-        // Cart::add([
-        //     'id' => $id,
-        //     'name' => $product->name,
-        //     'price' => $product->price,
-        //     'quantity' => 1,
-        //     'attributes' => [
-        //         'image' => $product->image
-        //     ]
-        // ]);
-        // return redirect('/cart');
+        $product = Product::find($id);
+        // dd($id);
+        Cart::add($id, $product->product_name, 1, $product->new_price,
+            ['image' => $product->image1_url]
+        );
+        // dd(Cart::content());
+        $message = '<strong>' . $product->product_name . '<strong> added to cart successfully.';
+        session()->flash('success', $message);
+        return redirect()->back();
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function cart()
     {
-        //
+        // dd($cartContent);
+        return view('landing-page.cart');
     }
 
     /**

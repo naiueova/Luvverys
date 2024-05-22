@@ -35,70 +35,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ( Cart::content() as $item )
                                 <tr>
                                     <td class="product_remove">
                                         <a href="#">
                                             <i class="pe-7s-close" title="Remove"></i>
                                         </a>
                                     </td>
-                                    <td class="product-thumbnail">
+                                    <td class="product-thumbnail" style="width : 10%; height : auto" >
                                         <a href="#">
-                                            <img src="assets/img/product/mini-product/product1.png"
+                                            <img src="{{ asset('storage/' . $item->options->image) }}"
                                                 alt="Cart Thumbnail">
                                         </a>
                                     </td>
-                                    <td class="product-name"><a href="#">Products Name Here</a>
+                                    <td class="product-name"><a href="#">{{$item->name}}</a>
                                     </td>
-                                    <td class="product-price"><span class="amount">$22.00</span></td>
+                                    <td class="product-price"><span class="amount">Rp {{number_format($item->price, 0, ',', '.')}}</span></td>
                                     <td class="product_pro_button quantity">
                                         <div class="pro-qty border">
-                                            <input type="text" value="1">
+                                            <input type="text" value="{{$item->qty}}">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal"><span class="amount">$22.00</span></td>
+                                    <td class="product-subtotal"><span class="amount">Rp {{number_format($item->price * $item->qty, 0, ',', '.' )}} </span></td>
                                 </tr>
-                                <tr>
-                                    <td class="product_remove">
-                                        <a href="#">
-                                            <i class="pe-7s-close" title="Remove"></i>
-                                        </a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="#">
-                                            <img src="assets/img/product/mini-product/product2.png"
-                                                alt="Cart Thumbnail">
-                                        </a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Lorem, ipsum dolor.</a></td>
-                                    <td class="product-price"><span class="amount">$24.00</span></td>
-                                    <td class="product_pro_button quantity">
-                                        <div class="pro-qty border">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$24.00</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product_remove">
-                                        <a href="#">
-                                            <i class="pe-7s-close" title="Remove"></i>
-                                        </a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="#">
-                                            <img src="assets/img/product/mini-product/product3.png"
-                                                alt="Cart Thumbnail">
-                                        </a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Praesentium vero nesciu.</a></td>
-                                    <td class="product-price"><span class="amount">$28.00</span></td>
-                                    <td class="product_pro_button quantity">
-                                        <div class="pro-qty border">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$28.00</span></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -122,7 +82,7 @@
                             <div class="cart-page-total">
                                 <h2>Cart totals</h2>
                                 <ul>
-                                    <li>Subtotal <span>$80.00</span></li>
+                                    <li>Subtotal <span>Rp {{Cart::subtotal()}}</span></li>
                                     <li>Total <span>$80.00</span></li>
                                 </ul>
                                 <a href="#">Proceed to checkout</a>
