@@ -27,9 +27,9 @@
                             <th>Name</th>
                             <th>Type</th>
                             <th>Discount Amount</th>
-                            <th>Status</th>
                             <th>Start Date</th>
                             <th>End Date</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -54,15 +54,15 @@
                                     {{ $data->discount_amount }}
                                 </td>
                                 <td>
-                                    <span class="{{ $data->status == '1' ? 'badge bg-success rounded-pill' : 'badge bg-danger rounded-pill' }}">
-                                        {{ $data->status == '1' ? 'Active' : 'InActive' }}
-                                    </span>
-                                </td>
-                                <td>
                                     {{ $data->start_date }}
                                 </td>
                                 <td>
                                     {{ $data->end_date }}
+                                </td>
+                                <td>
+                                    <span class="{{ $data->status == '1' ? 'badge bg-success' : 'badge bg-danger' }}">
+                                        {{ $data->status == '1' ? 'Active' : 'InActive' }}
+                                    </span>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">

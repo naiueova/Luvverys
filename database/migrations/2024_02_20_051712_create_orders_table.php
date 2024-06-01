@@ -13,11 +13,19 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id')->unique;
-            $table->foreign('customer_id')->references('id')->on('customers')->ondelete('cascade')->onupdate('cascade');
+            $table->string('order_no',10);
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->datetime('order_date');
+            $table->integer('subtotal');
+            $table->integer('discount_id')->nullable();
+            $table->integer('discount')->nullable();
             $table->bigInteger('total_amount');
-            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled']);
+            $table->enum('payment_method',['cod','transfer'])->default('cod');
+            $table->enum('bank_name', ['BRI','BCA','BSI','Mandiri'])->nullable();
+            $table->integer('card_number')->nullable();
+            $table->enum('payment_status',['paid','not_paid'])->default('not_paid');
+            $table->enum('status', ['pending', 'shipped', 'delivered','cancelled'])->default('pending');
+            $table->datetime('shipped_date')->nullable();
             $table->timestamps();
         });
     }

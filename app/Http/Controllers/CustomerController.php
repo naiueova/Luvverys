@@ -30,13 +30,15 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $data = $request->only([
-            'name',
+            'first_name',
+            'last_name',
             'email',
-            'password',
-            'phone',
-            'address1',
-            'address2',
-            'address3'
+            'phone_number',
+            'address',
+            'city',
+            'state',
+            'zip_code',
+            'notes'
         ]);
 
         Customer::create($data);
@@ -63,13 +65,16 @@ class CustomerController extends Controller
     {
         $data = Customer::find($id);
         $request->validate([
-            'name' => 'required|unique:customers,name,' .$id,
+            // 'name' => 'required|unique:customers,name,' .$id,
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'phone' => 'required',
-            'address1' => 'required',
-            'address2' => 'required',
-            'address3' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip_code' => 'required',
+            'notes' => 'required'
         ]);
 
         $data->update($request->all());

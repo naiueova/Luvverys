@@ -48,7 +48,7 @@
                                     {{ $data->role }}
                                 </td>
                                 <td>
-                                    <span class="{{ $data->status == '1' ? 'badge bg-success rounded-pill' : 'badge bg-danger rounded-pill' }}">
+                                    <span class="{{ $data->status == '1' ? 'badge bg-success' : 'badge bg-danger' }}">
                                         {{ $data->status == '1' ? 'Active' : 'InActive' }}
                                     </span>
                                 </td>

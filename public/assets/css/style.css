@@ -6220,8 +6220,10 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
     font-size: 17px;
   }
 }
-.product_pro_button .pro-qty a {
+.product_pro_button .pro-qty button {
   font-size: 20px;
+  border: none;
+  background: transparent;
   color: #ffffff;
 }
 
@@ -7687,40 +7689,41 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
 /*----------------------------------------*/
 /*  13-404
 /*----------------------------------------*/
-.error-404-area {
-  padding-bottom: 175px;
+.success-area {
+  padding:80px 0;
 }
-.error-404-content {
+.success-content {
   text-align: center;
 }
-.error-404-content .title {
-  background: -webkit-gradient(linear, 90deg, from(#fc7c7c), to(#bb1212));
-  background: linear-gradient(to 90deg, #fc7c7c 0%, #bb1212 100%);
-  -webkit-text-fill-color: transparent;
-  background: -webkit-linear-gradient(90deg, #fc7c7c 0%, #bb1212 100%);
-  -webkit-background-clip: text;
-          background-clip: text;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 150px;
-  border-color: white;
-  color: #ff374a;
-  -webkit-transform-origin: 50% 50% 0px;
-          transform-origin: 50% 50% 0px;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  font-family: "Roboto", sans-serif;
-}
-.error-404-content .sub-title {
+.success-content .title {
+    background: -webkit-gradient(linear, 90deg, from(#7cff7c), to(#12bb12));
+    background: linear-gradient(to 90deg, #7cff7c 0%, #12bb12 100%);
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(90deg, #7cff7c 0%, #12bb12 100%);
+    -webkit-background-clip: text;
+            background-clip: text;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 80px;
+    border-color: white;
+    color: #12bb12;
+    -webkit-transform-origin: 50% 50% 0px;
+            transform-origin: 50% 50% 0px;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-family: "Roboto", sans-serif;
+  }
+
+.success-content .sub-title {
   color: #444444;
   font-size: 35px;
 }
-.error-404-content .short-desc {
+.success-content .short-desc {
   color: #444444;
   max-width: 590px;
   margin: 0 auto;
 }
-.error-404-content .button-wrap {
+.success-content .button-wrap {
   margin-top: 40px;
 }
 
@@ -8560,7 +8563,7 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
   margin-bottom: 15px;
 }
 
-.order-button-payment input {
+.order-button-payment input, .order-button-customer input {
   background: #333333;
   border: medium none;
   color: #ffffff;
@@ -8575,3 +8578,4 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
   border: 1px solid transparent;
   cursor: pointer;
 }
+

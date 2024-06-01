@@ -35,6 +35,7 @@
                             <option selected value="default">Select Role</option>
                             <option value="admin" {{ $users->role == 'admin' ? 'selected' : '' }}>Admin</option>
                             <option value="user" {{ $users->role == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="owner" {{ $users->role == 'owner' ? 'selected' : '' }}>Owner</option>
                         </select>
                     </div>
                     <div class="mb-3 ms-3 me-3">

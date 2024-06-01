@@ -46,13 +46,8 @@
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
-                        <label for="old_price" class="form-label">Old Price</label>
-                        <input class="form-control" id="old_price" name="old_price" type="text" placeholder="Old Price" value="{{ $product->old_price ?? '' }}">
-                    </div>
-
-                    <div class="mb-3 ms-3 me-3">
-                        <label for="new_price" class="form-label">New Price</label>
-                        <input class="form-control" id="new_price" name="new_price" type="text" placeholder="New Price" value="{{ $product->new_price ?? '' }}">
+                        <label for="price" class="form-label">Price</label>
+                        <input class="form-control" id="price" name="price" type="text" placeholder="Price" value="{{ $product->price ?? '' }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
@@ -141,8 +136,7 @@
         const pc = document.getElementById('product_category_id')
         const pn = document.getElementById('product_name')
         const desc = document.getElementById('description')
-        const oprc = document.getElementById('old_price')
-        const nprc = document.getElementById('new_price')
+        const prc = document.getElementById('price')
         const stk = document.getElementById('stok_quantity')
         const slug = document.getElementById('slug')
 
@@ -156,12 +150,9 @@
             } else if (desc.value === "") {
                 desc.focus()
                 swal("Incomplete Data", "Description is required!", "error")
-            } else if (oprc.value === "") {
-                oprc.focus()
-                swal("Incomplete Data", "Old Price is required!", "error")
-            } else if (nprc.value === "") {
-                nprc.focus()
-                swal("Incomplete Data", "New Price is required!", "error")
+            } else if (prc.value === "") {
+                prc.focus()
+                swal("Incomplete Data", "Price is required!", "error")
             } else if (stk.value === "") {
                 stk.focus()
                 swal("Incomplete Data", "Stock is required!", "error")
@@ -178,11 +169,7 @@
             save()
         }
 
-        oprc.onkeypress = function(e) {
-            number(e);
-        }
-
-        nprc.onkeypress = function(e) {
+        prc.onkeypress = function(e) {
             number(e);
         }
     </script>

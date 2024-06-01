@@ -1,14 +1,14 @@
 @extends('landing-page.landing.main')
 @section('content')
     <!-- breadcrumbs area start -->
-    <div class="breadcrumbs_aree breadcrumbs_bg mb-110" data-bgimg="assets/img/others/breadcrumbs-bg.png">
+    <div class="breadcrumbs_aree breadcrumbs_bg mb-110" data-bgimg="{{asset('assets/img/others/breadcrumbs-bg.png')}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs_text">
                         <h1>My Account</h1>
                         <ul>
-                            <li><a href="index.html">Home </a></li>
+                            <li><a href="{{route('home')}}">Home </a></li>
                             <li> // My Account</li>
                         </ul>
                     </div>
@@ -23,9 +23,8 @@
                 <div class="col-lg-3">
                     <ul class="nav myaccount-tab-trigger" id="account-page-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="account-dashboard-tab" data-bs-toggle="tab"
-                                href="#account-dashboard" role="tab" aria-controls="account-dashboard"
-                                aria-selected="true">Dashboard</a>
+                            <a class="nav-link active" id="account-details-tab" data-bs-toggle="tab" href="#account-details"
+                                role="tab" aria-controls="account-details" aria-selected="false">Account Details</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders"
@@ -34,10 +33,6 @@
                         <li class="nav-item">
                             <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address"
                                 role="tab" aria-controls="account-address" aria-selected="false">Addresses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details"
-                                role="tab" aria-controls="account-details" aria-selected="false">Account Details</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="account-logout-tab" href="{{route('account.logout')}}" role="tab"
@@ -73,15 +68,6 @@
                                             </tr>
                                             <tr>
                                                 <td><a class="account-order-id" href="javascript:void(0)">#5364</a></td>
-                                                <td>Mar 27, 2019</td>
-                                                <td>On Hold</td>
-                                                <td>$162.00 for 2 items</td>
-                                                <td><a href="javascript:void(0)"
-                                                        class="btn btn-secondary btn-primary-hover"><span>View</span></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a class="account-order-id" href="javascript:void(0)">#5356</a></td>
                                                 <td>Mar 27, 2019</td>
                                                 <td>On Hold</td>
                                                 <td>$162.00 for 2 items</td>

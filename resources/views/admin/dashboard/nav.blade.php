@@ -22,7 +22,7 @@
 
                 <!-- Sidenav Menu Heading (Core)-->
                 <div class="sidenav-menu-heading">Dashboard Pages</div>
-                <a class="nav-link {{request()->routeIs('dashboard.*') ? 'active' : ''}}" href="dashboard">
+                <a class="nav-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="dashboard">
                     <div class="nav-link-icon"><i class="fa-solid fa-house"></i></div>
                     Dashboard
                 </a>
@@ -44,25 +44,13 @@
                     <div class="nav-link-icon"><i class="fa-solid fa-address-card"></i></div>
                     Customer
                 </a>
-                <a class="nav-link {{request()->routeIs('order.*') ? 'active' : ''}}" href="{{ route('order.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-                    Order
-                </a>
                 <a class="nav-link {{request()->routeIs('order-detail.*') ? 'active' : ''}}" href="{{ route('order-detail.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
                     Order Detail
                 </a>
-                <a class="nav-link {{request()->routeIs('payment.*') ? 'active' : ''}}" href="{{ route('payment.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-credit-card"></i></div>
-                    Payment
-                </a>
-                <a class="nav-link {{request()->routeIs('delivery.*') ? 'active' : ''}}" href="{{ route('delivery.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                    Delivery
-                </a>
-                <a class="nav-link {{request()->routeIs('product-review.*') ? 'active' : ''}}" href="{{ route('product-review.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-star"></i></div>
-                    Product Review
+                <a class="nav-link {{request()->routeIs('order.*') ? 'active' : ''}}" href="{{ route('order.index') }}">
+                    <div class="nav-link-icon"><i class="fa-solid fa-receipt"></i></div>
+                    Order
                 </a>
 
                 <!-- Sidenav Heading (Custom)-->
@@ -85,7 +73,7 @@
         <div class="sidenav-footer">
             <div class="sidenav-footer-content">
                 <div class="sidenav-footer-subtitle">Logged in as:</div>
-                <div class="sidenav-footer-title">Valerie Luna</div>
+                <div class="sidenav-footer-title">{{Auth::guard('admin')->user()->name}}</div>
             </div>
         </div>
     </nav>

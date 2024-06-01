@@ -34,9 +34,9 @@ class DiscountController extends Controller
             'name',
             'type',
             'discount_amount',
-            'status',
             'start_date',
-            'end_date'
+            'end_date',
+            'status'
         ]);
         Discount::create($data);
         return redirect()->route('discount.index')->with('message', 'The new discount data with the name '. $request->name . ' has been sucessfully saved!');

@@ -48,7 +48,7 @@
                                     {{ $data->quantity }}
                                 </td>
                                 <td>
-                                    {{ $data->subtotal }}
+                                    Rp {{ number_format($data->subtotal, 0, ',', '.') }}
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">

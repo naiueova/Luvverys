@@ -26,8 +26,7 @@
                             <th>Category Name</th>
                             <th>Product Name</th>
                             <th>Description</th>
-                            <th>Old Price</th>
-                            <th>New Price</th>
+                            <th>Price</th>
                             <th>Stok</th>
                             <th>1st Image</th>
                             <th>2nd Image</th>
@@ -55,10 +54,7 @@
                                     {{ $data->description }}
                                 </td>
                                 <td>
-                                    Rp {{ number_format($data->old_price, 0, ',', '.') }}
-                                </td>
-                                <td>
-                                    Rp {{ number_format($data->new_price, 0, ',', '.') }}
+                                    Rp {{ number_format($data->price, 0, ',', '.') }}
                                 </td>
                                 <td>
                                     {{ $data->stok_quantity }}

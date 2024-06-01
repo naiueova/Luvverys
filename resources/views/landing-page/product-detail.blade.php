@@ -1,14 +1,14 @@
 @extends('landing-page.landing.main')
 @section('content')
     <!-- breadcrumbs area start -->
-    <div class="breadcrumbs_aree breadcrumbs_bg mb-100" data-bgimg="{{asset('assets/img/others/breadcrumbs-bg.png')}}">
+    <div class="breadcrumbs_aree breadcrumbs_bg mb-100" data-bgimg="{{ asset('assets/img/others/breadcrumbs-bg.png') }}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs_text">
                         <h1>Single Product</h1>
                         <ul>
-                            <li><a href="{{route('index')}}">Home </a></li>
+                            <li><a href="{{ route('home') }}">Home </a></li>
                             <li> // Default Style</li>
                         </ul>
                     </div>
@@ -21,6 +21,14 @@
     <!-- single product section start-->
     <div class="single_product_section mb-100">
         <div class="container">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {!! session('success') !!}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 @foreach ($productDetails as $productDetail)
                     <div class="col-lg-6 col-md-6">
@@ -64,9 +72,6 @@
                             <h2 class="product__title">{{ $productDetail->product_name }}</h2>
                             <div class="price_box">
                                 <span class="new_price">Rp {{ number_format($productDetail->price, 0, ',', '.') }}</span>
-                                @if($productDetail->old_price)
-                                <span class="old_price"><del>Rp {{ number_format($productDetail->old_price, 0, ',', '.') }}</del></span>
-                                @endif
                             </div>
                             <div class="quickview__info mb-0">
                                 <p class="product_review d-flex align-items-center">
@@ -86,7 +91,7 @@
                                 <div class="pro-qty border">
                                     <input type="text" value="1">
                                 </div>
-                                <form action="{{route('addCart')}}" method="POST">
+                                <form action="{{ route('addCart') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $productDetail->id }}">
                                     <button class="add_to_cart " type="submit">add to cart</button>
@@ -95,7 +100,7 @@
                                 <a class="wishlist__btn" href="#"><i class="pe-7s-like"></i></a>
                             </div>
                             <div class="product_paypal">
-                                <img src="{{asset('assets/img/others/paypal.webp')}}" style="width: 30%" alt="payments">
+                                <img src="{{ asset('assets/img/others/paypal.webp') }}" style="width: 30%" alt="payments">
                             </div>
                         </div>
                     </div>
@@ -219,5 +224,4 @@
         </div>
     </div>
     <!-- product tab section end -->
-
 @endsection

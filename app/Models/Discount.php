@@ -14,8 +14,8 @@ class Discount extends Model
         'name',
         'type',
         'discount_amount',
-        'status',
         'start_date',
         'end_date',
+        'status',
     ];
 }

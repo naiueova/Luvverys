@@ -22,14 +22,14 @@
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
-                        <label for="slug" class="form-label">Slug</label>
-                        <input class="form-control" id="slug" name="slug" placeholder="Slug">
-                    </div>
                         <label for="image_url" class="form-label">Image</label>
                         <input type="file" id="image_url" name="image_url" class="form-control"
                             placeholder="Image" aria-label="Image">
-                    <div>
+                    </div>
 
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="slug" class="form-label">Slug</label>
+                        <input class="form-control" id="slug" name="slug" placeholder="Slug">
                     </div>
 
                     <div class="row ms-3 me-3 text-right justify-content-end">
@@ -59,7 +59,7 @@
                 swal("Incomplete Data", "Product Category must be selected!", "error")
             } else if (img.value === "") {
                 img.focus()
-                swal("Incomplete Data", "First Image is required!", "error")
+                swal("Incomplete Data", "Image is required!", "error")
             } else if (slug.value === "") {
                 slug.focus()
                 swal("Incomplete Data", "Slug is required!", "error")

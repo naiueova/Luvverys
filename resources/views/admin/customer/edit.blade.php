@@ -18,33 +18,45 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3 ms-3 me-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input class="form-control" id="name" name="name" type="text" placeholder="Name" aria-label="Name" value="{{ $customers->name ?? '' }}">
+                        <label for="first_name" class="form-label">Fisrt Name</label>
+                        <input class="form-control" id="first_name" name="first_name" type="text" placeholder="First Name" aria-label="Fisrt Name">
                     </div>
+
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input class="form-control" id="last_name" name="last_name" type="text" placeholder=" Last Name" aria-label="Last Name">
+                    </div>
+
                     <div class="mb-3 ms-3 me-3">
                         <label for="email" class="form-label">Email</label>
-                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" aria-label="Email" value="{{ $customers->email ?? '' }}">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" aria-label="Email">
                     </div>
+
                     <div class="mb-3 ms-3 me-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" aria-label="Password" value="{{ $customers->password ?? '' }}">
+                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Phone Number" aria-label="Phone Number">
                     </div>
+
                     <div class="mb-3 ms-3 me-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone" aria-label="Phone" value="{{ $customers->phone ?? '' }}">
+                        <label for="address" class="form-label">Address</label>
+                        <input class="form-control" id="address" name="address" type="text" placeholder="Address" aria-label="Address">
                     </div>
+
                     <div class="mb-3 ms-3 me-3">
-                        <label for="address1" class="form-label">Address1</label>
-                        <input class="form-control" id="address1" name="address1" type="text" placeholder="Address1" aria-label="Address1" value="{{ $customers->address1 ?? '' }}">
+                        <label for="city" class="form-label">City</label>
+                        <input class="form-control" id="city" name="city" type="text" placeholder="City" aria-label="City">
                     </div>
+
                     <div class="mb-3 ms-3 me-3">
-                        <label for="address2" class="form-label">Address2</label>
-                        <input class="form-control" id="address2" name="address2" type="text" placeholder="Address2" aria-label="Address2" value="{{ $customers->address2 ?? '' }}">
+                        <label for="state" class="form-label">State</label>
+                        <input class="form-control" id="state" name="state" type="text" placeholder="State" aria-label="State">
                     </div>
+
                     <div class="mb-3 ms-3 me-3">
-                        <label for="address3" class="form-label">Address3</label>
-                        <input class="form-control" id="address3" name="address3" type="text" placeholder="Address3" aria-label="Address3" value="{{ $customers->address3 ?? '' }}">
+                        <label for="zip_code" class="form-label">Zip Code</label>
+                        <input class="form-control" id="zip_code" name="zip_code" type="number" placeholder="Zip Code" aria-label="Zip Code">
                     </div>
+
                     <div class="row ms-3 me-3 text-right justify-content-end">
                         <div class="col-3">
                             <a href="{{ route('customer.index') }}" class="btn btn-danger w-100">Cancel</a>
@@ -62,37 +74,42 @@
     <script>
         const btnSave = document.getElementById("save")
         const form = document.getElementById("frmCustomer")
-        const nm = document.getElementById("name")
+        const fnm = document.getElementById("first_name")
+        const lnm = document.getElementById("last_name")
         const email = document.getElementById("email")
-        const pass = document.getElementById("password")
-        const phone = document.getElementById("phone")
-        const addr1 = document.getElementById("address1")
-        const addr2 = document.getElementById("address2")
-        const addr3 = document.getElementById("address3")
-        let message = ""
+        const phone = document.getElementById("phone_number")
+        const addr = document.getElementById("address")
+        const city = document.getElementById("city")
+        const state = document.getElementById("state")
+        const zip = document.getElementById("zip_code")
+        const notes = document.getElementById("notes")
+        // let message = ""
 
         function save() {
-            if (nm.value == "") {
-                nm.focus()
-                swal("Incomplete data", "Name must be filled!", "error")
+            if (fnm.value == "") {
+                fnm.focus()
+                swal("Incomplete data", "Fisrt Name must be filled!", "error")
+            } else if (lnm.value == "") {
+                lnm.focus()
+                swal("Incomplete data", "Last Name must be filled!", "error")
             } else if (email.value == "") {
                 email.focus()
                 swal("Incomplete data", "Email must be filled!", "error")
-            } else if (pass.value == "") {
-                pass.focus()
-                swal("Incomplete data", "Password must be filled!", "error")
             } else if (phone.value == "") {
                 phone.focus()
                 swal("Incomplete data", "Phone must be filled!", "error")
-            } else if (addr1.value == "") {
-                addr1.focus()
-                swal("Incomplete data", "Address1 must be filled!", "error")
-            } else if (addr2.value == "") {
-                addr2.focus()
-                swal("Incomplete data", "Address2 must be filled!", "error")
-            } else if (addr3.value == "") {
-                addr3.focus()
-                swal("Incomplete data", "Address3 must be filled!", "error")
+            } else if (addr.value == "") {
+                addr.focus()
+                swal("Incomplete data", "Address must be filled!", "error")
+            } else if (city.value == "") {
+                city.focus()
+                swal("Incomplete data", "City must be filled!", "error")
+            } else if (state.value == "") {
+                state.focus()
+                swal("Incomplete data", "State must be filled!", "error")
+            } else if (zip.value == "") {
+                zip.focus()
+                swal("Incomplete data", "Zip Code must be filled!", "error")
             } else {
                 form.submit()
             }

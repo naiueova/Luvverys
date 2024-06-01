@@ -8,7 +8,7 @@
                     <div class="breadcrumbs_text">
                         <h1>Contact Us</h1>
                         <ul>
-                            <li><a href="{{route('index')}}">Home </a></li>
+                            <li><a href="{{route('home')}}">Home </a></li>
                             <li> // Contact Us</li>
                         </ul>
                     </div>
@@ -34,14 +34,6 @@
                                 </form>
                             </div>
                             <div class="contact_info_details mb-45">
-                                <h3>Store In New Work</h3>
-                                <p>Your address goes here.</p>
-                                <p><a href="tel:0123456789">0123456789</a></p>
-                                <p><a href="#">demo@example.com</a></p>
-                                <p><a href="#">www.example.com</a></p>
-                                <span>See On The Map</span>
-                            </div>
-                            <div class="contact_info_details">
                                 <h3>Store In New Work</h3>
                                 <p>Your address goes here.</p>
                                 <p><a href="tel:0123456789">0123456789</a></p>

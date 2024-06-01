@@ -45,10 +45,20 @@
                                     {{ $data->order_date }}
                                 </td>
                                 <td>
-                                    {{ $data->total_amount }}
+                                    Rp {{ number_format($data->total_amount, 0, ',', '.') }}
                                 </td>
                                 <td>
-                                    {{ $data->status }}
+                                    <span class="@if ($data->status == 'pending')
+                                        badge bg-warning
+                                    @elseif ($data->status == 'processing')
+                                        badge bg-primary
+                                    @elseif ($data->status == 'completed')
+                                        badge bg-success
+                                    @else
+                                        badge bg-danger
+                                    @endif">
+                                        {{ $data->status}}
+                                    </span>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">

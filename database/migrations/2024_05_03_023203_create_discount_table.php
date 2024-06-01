@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->enum('type', ['percentage', 'fixed'])->default('fixed');
             $table->double('discount_amount', 10, 2);
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->integer('status')->default(1);
-            $table->date('start_date');
-            $table->date('end_date');
             $table->timestamps();
         });
     }

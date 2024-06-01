@@ -101,28 +101,19 @@
                                 </div>
                                 <div class="modal_price mb-10">
                                     <span class="new_price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                    <!-- Optionally add old price if available -->
-                                    @if($product->old_price)
-                                    <span class="old_price">Rp {{ number_format($product->old_price, 0, ',', '.') }}</span>
-                                    @endif
                                 </div>
                                 <div class="modal_description mb-15">
                                     <p>{{ $product->description }}</p>
                                 </div>
                                 <div class="variants_selects">
                                     <div class="variants_size">
-                                        <h2>Size</h2>
-                                        <select class="select_option">
-                                            <option selected value="1">S</option>
-                                            <option value="1">M</option>
-                                            <option value="1">L</option>
-                                            <option value="1">XL</option>
-                                            <option value="1">XXL</option>
-                                        </select>
+                                        <h2>Stock</h2>
+                                        <p>{{ $product->stok_quantity }}</p>
                                     </div>
                                     <div class="modal_add_to_cart">
-                                        <form action="#">
-                                            <input min="1" max="100" step="1" value="1" type="number">
+                                        <form action="{{ route('addCart') }}" method="POST">
+                                            @csrf
+                                            <input value="{{ $product->id }}" type="hidden" name="id">
                                             <button type="submit">Add to cart</button>
                                         </form>
                                     </div>

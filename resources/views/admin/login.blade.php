@@ -9,7 +9,7 @@
         <title>Login | Admin</title>
         <link href="{{ asset('asset/js/cute-alert/style.css') }}" rel="stylesheet" />
         <link href="{{asset('asset/css/styles.css')}}" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="{{ asset('asset/img/favicon.png)') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('asset/img/favicon_luvverys.png') }}" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
@@ -23,7 +23,10 @@
                             <!-- Basic login form-->
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header justify-content-center">
-                                    <h3 class="fw-light my-4">Login</h3>
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ asset('asset/img/favicon_luvverys.png') }}" style="width: 10%" alt="">
+                                        <h3 class="fw-light my-4 ms-2 fw-bold">Login</h3>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <!-- Login form-->
@@ -71,7 +74,7 @@
             <footer class="footer-admin mt-auto footer-dark">
                 <div class="container-xl px-4">
                     <div class="row">
-                        <div class="col-md-6 small">Copyright &copy; Your Website 2021</div>
+                        <div class="col-md-6 small">Copyright &copy; Luvverys Bakery 2024</div>
                         <div class="col-md-6 text-md-end small">
                             <a href="#!">Privacy Policy</a>
                             &middot;

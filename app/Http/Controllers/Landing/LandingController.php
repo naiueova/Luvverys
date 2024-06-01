@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategories;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class LandingController extends Controller
 {
@@ -27,7 +28,7 @@ class LandingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function cart()
     {
         //
     }

@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreign('product_category_id')->references('id')->on('product_categories')->ondelete('cascade')->onupdate('cascade');
             $table->string('product_name', 100)->unique;
             $table->text('description');
-            $table->double('old_price');
-            $table->double('new_price');
+            $table->double('price');
             $table->integer('stok_quantity');
             $table->string('image1_url');
             $table->string('image2_url');

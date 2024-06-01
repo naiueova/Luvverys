@@ -23,13 +23,15 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
+                            <th>Fisrt Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
-                            {{-- <th>Password</th> --}}
-                            <th>Phone</th>
-                            <th>Address1</th>
-                            <th>Address2</th>
-                            <th>Address3</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip Code</th>
+                            <th>Notes</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -42,25 +44,31 @@
                                     </div>
                                 </td>
                                 <td>
-                                    {{ $data->name }}
+                                    {{ $data->first_name }}
+                                </td>
+                                <td>
+                                    {{ $data->last_name }}
                                 </td>
                                 <td>
                                     {{ $data->email }}
                                 </td>
-                                {{-- <td>
-                                    {{ $data->password }}
-                                </td> --}}
                                 <td>
-                                    {{ $data->phone }}
+                                    {{ $data->phone_number }}
                                 </td>
                                 <td>
-                                    {{ $data->address1 }}
+                                    {{ $data->address }}
                                 </td>
                                 <td>
-                                    {{ $data->address2 }}
+                                    {{ $data->city }}
                                 </td>
                                 <td>
-                                    {{ $data->address3 }}
+                                    {{ $data->state }}
+                                </td>
+                                <td>
+                                    {{ $data->zip }}
+                                </td>
+                                <td>
+                                    {{ $data->notes }}
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">

@@ -24,7 +24,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.order.create');
+        return view('admin.order.create', [
+            'customers' => Customer::all()
+        ]);
     }
 
     /**
@@ -32,7 +34,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'customer_id',
+            'order_date',
+            'total_amount',
+            'status'
+        ]);
+        Order::create($data);
+        return redirect()->route('order.index')->with('message', 'The new order data has been sucessfully saved!');
     }
 
     /**
@@ -48,7 +57,9 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $orders = Order::find($id);
+        $customers = Customer::all();
+        return view('admin.order.edit', compact('orders', 'customers'));
     }
 
     /**
@@ -56,7 +67,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Order::find($id);
+        $data->update($request->all());
+        $data->save();
+        return redirect()->route('order.index')->with('message', 'Order data with the name '. $request->name . ' updated sucessfully saved!');
     }
 
     /**

@@ -44,6 +44,18 @@
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
+                        <label for="start_date" class="form-label">Start Date</label>
+                        <input class="form-control" id="start_date" name="start_date" type="datetime-local"
+                        placeholder="Start Date" aria-label="Start Date">
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="end_date" class="form-label">End Date</label>
+                        <input class="form-control" id="end_date" name="end_date" type="datetime-local" placeholder="End Date"
+                        aria-label="End Date">
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3">
                         <label for="status">Status</label>
                         <select class="form-select" aria-label="Default select example" name="status" id="status">
                             <option selected value="default">Select Status</option>
@@ -52,21 +64,9 @@
                         </select>
                     </div>
 
-                    <div class="mb-3 ms-3 me-3">
-                        <label for="start_date" class="form-label">Start Date</label>
-                        <input class="form-control" id="start_date" name="start_date" type="date"
-                            placeholder="Start Date" aria-label="Start Date">
-                    </div>
-
-                    <div class="mb-3 ms-3 me-3">
-                        <label for="end_date" class="form-label">End Date</label>
-                        <input class="form-control" id="end_date" name="end_date" type="date" placeholder="End Date"
-                            aria-label="End Date">
-                    </div>
-
                     <div class="row ms-3 me-3 text-right justify-content-end">
                         <div class="col-3">
-                            <a href="{{ route('product-categories.index') }}" class="btn btn-danger w-100">Cancel</a>
+                            <a href="{{ route('order.index') }}" class="btn btn-danger w-100">Cancel</a>
                         </div>
 
                         <div class="col-3">
@@ -88,7 +88,6 @@
         const st = document.getElementById("status")
         const sd = document.getElementById("start_date")
         const ed = document.getElementById("end_date")
-        let status = document.getElementById('status')
 
         function save() {
             if (code.value === "") {
@@ -111,6 +110,7 @@
                 swal("Incomplete Data", "Start Date is required!", "error")
             } else if (ed.value === "") {
                 ed.focus()
+                swal("Incomplete Data", "End Date is required!", "error")
             } else {
                 form.submit();
             }

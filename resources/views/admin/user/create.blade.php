@@ -34,6 +34,7 @@
                             <option selected value="default">Select Role</option>
                             <option value="admin">Admin</option>
                             <option value="user">User</option>
+                            <option value="owner">Owner</option>
                         </select>
                     </div>
                     <div class="mb-3 ms-3 me-3">

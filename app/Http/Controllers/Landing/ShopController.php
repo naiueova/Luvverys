@@ -30,9 +30,9 @@ class ShopController extends Controller
 
         if ($request->get('sort')) {
             if ($request->get('sort') == 'low') {
-                $productsQuery->orderBy('new_price', 'ASC');
+                $productsQuery->orderBy('price', 'ASC');
             } else {
-                $productsQuery->orderBy('new_price', 'DESC');
+                $productsQuery->orderBy('price', 'DESC');
             }
         } else {
             $productsQuery->orderByDesc('id');

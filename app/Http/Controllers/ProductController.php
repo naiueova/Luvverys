@@ -41,8 +41,7 @@ class ProductController extends Controller
                 'product_categories' => ProductCategories::all(),
                 'product_name' => $request->product_name,
                 'description' => $request->description,
-                'old_price' => $request->old_price,
-                'new_price' => $request->new_price,
+                'price' => $request->price,
                 'stok_quantity' => $request->stok_quantity,
                 'image1_url' => $request->image1_url,
                 'image2_url' => $request->image2_url,
@@ -53,7 +52,7 @@ class ProductController extends Controller
             ]);
         } else {
             $data = $request->only([
-                'product_category_id', 'product_name', 'description', 'old_price', 'new_price', 'stok_quantity', 'image1_url', 'image2_url', 'image3_url', 'image4_url', 'image5_url', 'slug'
+                'product_category_id', 'product_name', 'description', 'price', 'stok_quantity', 'image1_url', 'image2_url', 'image3_url', 'image4_url', 'image5_url', 'slug'
             ]);
             $data['image1_url'] = $request['image1_url']->store('Products/Photos');
             $data['image2_url'] = $request['image2_url']->store('Products/Photos');
@@ -88,8 +87,7 @@ class ProductController extends Controller
         $data->product_category_id = $request->product_category_id;
         $data->product_name = $request->product_name;
         $data->description = $request->description;
-        $data->old_price = $request->old_price;
-        $data->new_price = $request->new_price;
+        $data->price = $request->price;
         $data->stok_quantity = $request->stok_quantity;
         if($request->file('image1_url') != null){
             unlink("storage/".$data->image1_url);

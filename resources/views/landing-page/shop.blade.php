@@ -9,7 +9,7 @@
                     <div class="breadcrumbs_text">
                         <h1>Products</h1>
                         <ul>
-                            <li><a href="{{ route('index') }}">Home </a></li>
+                            <li><a href="{{ route('home') }}">Home </a></li>
                             <li> // Shop</li>
                         </ul>
                     </div>
@@ -40,35 +40,9 @@
                                 </ul>
                             </div>
                         </div>
-                        {{-- <div class="widget__list category wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
-                            <h3>category</h3>
-                            <div class="widget_category">
-                                <ul>
-                                    <li><a href="#">All <span>(65)</span></a></li>
-                                    <li><a href="#">Cookies <span>(15)</span></a></li>
-                                    <li><a href="#">Desserts <span>(10)</span></a></li>
-                                    <li><a href="#">Muffins <span>(22)</span></a></li>
-                                    <li><a href="#">Pizza <span>(15)</span></a></li>
-                                    <li><a href="#">Doughnuts <span>(10)</span></a></li>
-                                    <li><a href="#">Danish <span>(24)</span></a></li>
-                                </ul>
-                            </div>
-                        </div> --}}
                         <div class="widget__list wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
                             <div class="widget_banner">
                                 <img src="assets/img/others/product-sidaber-banner.png" alt="">
-                            </div>
-                        </div>
-                        <div class="widget__list tags wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.4s">
-                            <h3>Tags</h3>
-                            <div class="widget_tags">
-                                <ul>
-                                    <li><a href="#">Cookies</a></li>
-                                    <li><a href="#">Doughnuts</a></li>
-                                    <li><a href="#">Desserts</a></li>
-                                    <li><a href="#">Muffins</a></li>
-                                    <li><a href="#">Doughnuts</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -84,7 +58,7 @@
                                 <div class="sorting__by d-flex align-items-center">
                                     <span>Sort By : </span>
                                     {{-- <form class="select_option" action="#"> --}}
-                                    <select name="sort" id="sort" onchange="applyFilter()">
+                                    <select name="sort" id="sort" onchange="applyFilter()" class="nice-select">
                                         <option selected value="1">Default</option>
                                         <option value="low" {{ $sort == 'low' ? 'selected' : '' }}> low to high</option>
                                         <option value="high" {{ $sort == 'high' ? 'selected' : '' }}> high to low</option>
@@ -107,7 +81,6 @@
                         </div>
                         <!--shop toolbar area end-->
 
-
                         <!--shop gallery start-->
                         <div class="product_page_gallery">
                             <div class="tab-content" id="myTabContent">
@@ -124,9 +97,6 @@
                                                                     alt=""></a>
                                                             <div class="action_links">
                                                                 <ul class="d-flex justify-content-center">
-                                                                    <li class="add_to_cart"><a href="cart.html"
-                                                                            title="Add to cart">
-                                                                            <span class="pe-7s-shopbag"></span></a></li>
                                                                     <li class="wishlist"><a href="#"
                                                                             title="Add to Wishlist"><span
                                                                                 class="pe-7s-like"></span></a></li>
@@ -143,7 +113,7 @@
                                                             </h4>
                                                             <div class="price_box">
                                                                 <span class="current_price">Rp
-                                                                    {{ number_format($product->new_price, 0, ',', '.') }}</span>
+                                                                    {{ number_format($product->price, 0, ',', '.') }}</span>
                                                             </div>
                                                         </figcaption>
                                                     </figure>

@@ -153,25 +153,37 @@
     });
 
     //Quantity Counter
-    $('.pro-qty').append('<a href="#" class="inc qty-btn">+</a>');
-    $('.pro-qty').prepend('<a href="#" class= "dec qty-btn">-</a>');
+    // $('.pro-qty').append('<a href="#" class="inc qty-btn">+</a>');
+    // $('.pro-qty').prepend('<a href="#" class= "dec qty-btn">-</a>');
 
     $('.qty-btn').on('click', function (e) {
         e.preventDefault();
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
+        var newVal;
+        var rowId = $button.data('id');
+
         if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
+            newVal = parseFloat(oldValue) + 1;
         } else {
             // Don't allow decrementing below zero
             if (oldValue > 1) {
-                var newVal = parseFloat(oldValue) - 1;
+                newVal = parseFloat(oldValue) - 1;
             } else {
                 newVal = 1;
             }
         }
+        var newQty = newVal;
+        updateCart(rowId, newQty);
+
         $button.parent().find('input').val(newVal);
     });
+
+    function updateCart(rowId, qty) {
+        document.getElementById('cartRowId').value = rowId;
+        document.getElementById('cartQty').value = qty;
+        document.getElementById('updateCartForm').submit();
+    }
 
     //Shopping Cart addClass removeClass
     $('.shopping_cart > a').on('click', function () {
@@ -210,7 +222,7 @@
     });
 
     // Nice Select
-    $('select,.select_option').niceSelect();
+    $('select.nice-select,.select_option').niceSelect();
 
     /*---  ScrollUp Active ---*/
     $.scrollUp({

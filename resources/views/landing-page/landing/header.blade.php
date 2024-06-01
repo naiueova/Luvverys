@@ -1,3 +1,11 @@
+@php
+    if (Auth::check()) {
+        $user = Auth::user();
+        $cartItems = Cart::instance('cart_' . $user->id)->content();
+        $cartCount = Cart::instance('cart_' . $user->id)->count();
+        $cartTotal = Cart::instance('cart_' . $user->id)->subtotal();
+    }
+@endphp
 <!--header area start-->
 <header class="header_section">
     <div class="header_top">
@@ -10,15 +18,17 @@
                         </div>
                         <div class="header_top_sidebar d-flex align-items-center">
                             <ul class="d-flex">
-                                <li><i class="icofont-phone"></i> <a href="tel:+00123456789">+00 123 456 789</a>
-                                </li>
-                                <li><i class="icofont-envelope"></i> <a
-                                        href="mailto:demo@example.com">luvverys@gmail.com</a></li>
+                                @if (Auth::check())
+                                    <li><i class="icofont-phone"></i> <a href="#">{{ Auth::user()->name }}</a>
+                                    </li>
+                                    <li><i class="icofont-envelope"></i> <a href="#">{{ Auth::user()->email }}</a>
+                                    </li>
+                                @endif
                                 <li class="account_link"> <i class="icofont-user-alt-7"></i><a
                                         href="#">Account</a>
                                     <ul class="dropdown_account_link">
                                         @if (Auth::check())
-                                            <li><a href="{{ route('my_account') }}">My Account</a></li>
+                                            <li><a href="{{ route('account.profile') }}">My Account</a></li>
                                             <li><a href="{{ route('account.logout') }}">Logout</a></li>
                                         @else
                                             <li><a href="{{ route('account.login') }}">Login</a></li>
@@ -37,15 +47,15 @@
             <div class="col-12">
                 <div class="main_header d-flex justify-content-between align-items-center">
                     <div class="header_logo">
-                        <a class="sticky_none" href="{{ route('index') }}"><img
-                                src="{{ asset('assets/img/logo/logo.png') }}" alt=""></a>
+                        <a class="sticky_none" href="{{ route('home') }}"><img
+                                src="{{ asset('assets/img/logo/logo_luvverys.png') }}" alt=""></a>
                     </div>
                     <!--main menu start-->
                     <div class="main_menu d-none d-lg-block">
                         <nav>
                             <ul class="d-flex">
-                                <li><a class=" {{ request()->routeIs('index') ? 'active' : '' }}"
-                                        href="{{ route('index') }}">Home</a></li>
+                                <li><a class=" {{ request()->routeIs('home') ? 'active' : '' }}"
+                                        href="{{ route('home') }}">Home</a></li>
                                 <li><a class=" {{ request()->routeIs('about') ? 'active' : '' }}"
                                         href="{{ route('about') }}">About</a></li>
                                 <li><a class=" {{ request()->routeIs('shop') ? 'active' : '' }}"
@@ -63,7 +73,7 @@
                             <li class="header_wishlist"><a href="{{ route('wishlist-landing') }}"><i
                                         class="pe-7s-like"></i></a></li>
                             <li class="shopping_cart"><a href="javascript:void(0)"><i class="pe-7s-shopbag"></i></a>
-                                <span class="item_count">2</span>
+                                <span class="item_count">{{ $cartCount ?? '0' }}</span>
                             </li>
                         </ul>
                         <div class="canvas_open">
@@ -93,7 +103,7 @@
                     </div>
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
-                            <li class="menu-item-has-children active"><a href="{{ route('index') }}">Home</a></li>
+                            <li class="menu-item-has-children active"><a href="{{ route('home') }}">Home</a></li>
                             <li class="menu-item-has-children"><a href="{{ route('about') }}">About Us</a></li>
                             <li class="menu-item-has-children"><a href="{{ route('shop') }}">Shop</a></li>
                             <li class="menu-item-has-children"><a href="{{ route('contact') }}">Contact Us</a></li>
@@ -117,41 +127,31 @@
                 <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
             </div>
         </div>
-        <div class="cart_item">
-            <div class="cart_img">
-                <a href="single-product.html"><img src="{{ asset('assets/img/product/product1.png') }}"
-                        alt=""></a>
-            </div>
-            <div class="cart_info">
-                <a href="single-product.html">Primis In Faucibus</a>
-                <p>1 x <span> $65.00 </span></p>
-            </div>
-            <div class="cart_remove">
-                <a href="#"><i class="ion-android-close"></i></a>
-            </div>
-        </div>
-        {{-- <div class="cart_item">
-            <div class="cart_img">
-                <a href="single-product.html"><img src="{{asset('assets/img/product/product2.png')}}" alt=""></a>
-            </div>
-            <div class="cart_info">
-                <a href="single-product.html">Letraset Sheets</a>
-                <p>1 x <span> $60.00 </span></p>
-            </div>
-            <div class="cart_remove">
-                <a href="#"><i class="ion-android-close"></i></a>
-            </div>
-        </div> --}}
+        @if ($cartItems ?? '')
+            @foreach ($cartItems as $item)
+                <div class="cart_item">
+                    <div class="cart_img">
+                        <a href="single-product.html"><img src="{{ asset('storage/' . $item->options->image) }}"
+                                alt=""></a>
+                    </div>
+                    <div class="cart_info">
+                        <a href="single-product.html">{{ $item->name }}</a>
+                        <p>{{ $item->qty }} x Rp {{ number_format($item->price, 0, ',', '.') }} = <span>Rp
+                                {{ number_format($item->price * $item->qty, 0, ',', '.') }}</span></p>
+                    </div>
+                    <div class="cart_remove">
+                        <a href="#"><i class="ion-android-close"></i></a>
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
     <div class="mini_cart_table">
         <div class="cart_table_border">
             <div class="cart_total">
-                <span>Sub total:</span>
-                <span class="price">$125.00</span>
-            </div>
-            <div class="cart_total mt-10">
-                <span>total:</span>
-                <span class="price">$125.00</span>
+                <span>Total:</span>
+                <span class="price">Rp
+                    {{ $cartTotal ?? '' }}</span>
             </div>
         </div>
     </div>

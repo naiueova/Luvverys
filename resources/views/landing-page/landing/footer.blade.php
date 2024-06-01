@@ -32,7 +32,7 @@
                         </div>
                         <div class="shipping_text">
                             <h3>Easy Returns</h3>
-                            <p>Shop Wwith Confidence</p>
+                            <p>Shop With Confidence</p>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                             <h3>Contact Us</h3>
                             <div class="footer_contact_desc">
                                 <p>If you have any question.please
-                                    contact us at <a href="#">demo@example.com</a></p>
+                                    contact us at <a href="#">luvverys@gmail.com</a></p>
                             </div>
                             <div class="footer_contact_info">
                                 <div class="footer_contact_info_list d-flex align-items-center">
@@ -139,7 +139,7 @@
         </div>
         <div class="footer_bottom">
             <div class="copyright_right text-center">
-                <p> © 2024 <a href="{{route('index')}}"> luvverys.</a> Made with <i class="ion-heart"></i> by
+                <p> © 2024 <a href="{{route('home')}}"> luvverys.</a> Made with <i class="ion-heart"></i> by
                     <a href="https://themeforest.net/user/codecarnival/portfolio">CodeCarnival</a>
                 </p>
             </div>
