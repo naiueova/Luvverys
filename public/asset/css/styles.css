@@ -8243,6 +8243,11 @@ textarea.form-control-lg {
   border-radius: 0.35rem;
 }
 
+td[data-bs-toggle="tooltip"] {
+    position: relative;
+    z-index: 1000;
+}
+
 .popover {
   position: absolute;
   top: 0;

@@ -1,15 +1,15 @@
 @extends('landing-page.landing.main')
 @section('content')
     <!--slide banner section start-->
-    <div class="hero_banner_section hero_banner2 d-flex align-items-center mb-60" data-bgimg="assets/img/bg/hero-bg2.png">
+    <div class="hero_banner_section hero_banner2 d-flex align-items-center mb-60" data-bgimg="{{ asset('assets/img/bg/Banner_full.png')}}">
         <div class="container">
             <div class="hero_banner_inner">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero_content hero_content2">
-                            <h3 class="wow fadeInUp text-white" data-wow-delay="0.1s" data-wow-duration="1.1s"> Up To
+                            <h3 class="wow fadeInUp text-grey" data-wow-delay="0.1s" data-wow-duration="1.1s"> Up To
                                 Sale <span> 50% Off</span> </h3>
-                            <h1 class="wow fadeInUp text-white" data-wow-delay="0.2s" data-wow-duration="1.2s">We Bake
+                            <h1 class="wow fadeInUp text-grey" data-wow-delay="0.2s" data-wow-duration="1.2s">We Bake
                                 With <br>
                                 Love.</h1>
                             <a class="btn btn-link wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s"
@@ -51,7 +51,7 @@
                             </div>
                             <div class="featured_banner_text d-flex justify-content-between align-items-center">
                                 <h3><a href="{{ route('shop', $pc->slug) }}">{{ $pc->category_name }}</a></h3>
-                                <span>({{ $pc->count() }})</span>
+                                <span>({{ $pc->products_count }})</span>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                         <div class="banner_thumb">
                             <a href="#"><img src="{{ asset('assets/img/bg/banner3_luvverys.webp')}}" alt=""></a>
                             <div class="banner_text">
-                                <h3><span>70%</span> Sale Off</h3>
+                                <h3><span>Buy</span> Now!!</h3>
                                 <h2>Best Quality <br>
                                     Products</h2>
                                 <a class="btn btn-link" href="{{ route('shop') }}">Shop Now</a>
@@ -145,7 +145,7 @@
                         <div class="banner_thumb">
                             <a href="#"><img src="{{ asset('assets/img/bg/banner4_luvverys.webp')}}" alt=""></a>
                             <div class="banner_text">
-                                <h3><span>25%</span> Sale Off</h3>
+                                <h3><span>Buy</span> Now!!</h3>
                                 <h2>Sweet &  <br>
                                     Spicy Pastry</h2>
                                 <a class="btn btn-link" href="{{ route('shop') }}">Shop Now</a>
@@ -158,9 +158,9 @@
                         <div class="banner_thumb">
                             <a href="#"><img src="{{ asset('assets/img/bg/banner5_luvverys.webp')}}" alt=""></a>
                             <div class="banner_text">
-                                <h3><span>35%</span> Sale Off</h3>
-                                <h2>Best Quality <br>
-                                    Products</h2>
+                                <h3><span>Buy</span> Now!!</h3>
+                                <h2>Premimium <br>
+                                    Ingredients</h2>
                                 <a class="btn btn-link" href="{{ route('shop') }}">Shop Now</a>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                         <div class="single_services one text-center wow fadeInUp" data-wow-delay="0.1s"
                             data-wow-duration="1.1s">
                             <div class="services_thumb">
-                                <img src="assets/img/others/service5_luvverys.png" alt="">
+                                <img src="{{ asset('assets/img/others/service5_luvverys.png')}}" alt="">
                             </div>
                             <div class="services_content">
                                 <h3>Breakfast</h3>
@@ -195,7 +195,7 @@
                         <div class="single_services three text-center wow fadeInUp" data-wow-delay="0.3s"
                             data-wow-duration="1.3s">
                             <div class="services_thumb">
-                                <img src="assets/img/others/service6_luvverys.png" alt="">
+                                <img src="{{ asset('assets/img/others/service6_luvverys.png')}}" alt="">
                             </div>
                             <div class="services_content">
                                 <h3>Family Gatherings</h3>
@@ -205,7 +205,7 @@
                         <div class="single_services two text-center wow fadeInUp" data-wow-delay="0.2s"
                             data-wow-duration="1.2s">
                             <div class="services_thumb">
-                                <img src="assets/img/others/service7_luvverys.png" alt="">
+                                <img src="{{ asset('assets/img/others/service7_luvverys.png')}}" alt="">
                             </div>
                             <div class="services_content">
                                 <h3>Celebration</h3>
@@ -215,7 +215,7 @@
                         <div class="single_services four text-center wow fadeInUp" data-wow-delay="0.4s"
                             data-wow-duration="1.4s">
                             <div class="services_thumb">
-                                <img src="assets/img/others/service8_luvverys.png" alt="">
+                                <img src="{{ asset('assets/img/others/service8_luvverys.png')}}" alt="">
                             </div>
                             <div class="services_content">
                                 <h3>Holiday Festivities</h3>
@@ -231,14 +231,14 @@
 
     <!-- banner fullwidth section start -->
     <div class="deals_banner_section padding-l-r-92 mb-105 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">
-        <div class="deals_banner_bg" data-bgimg="assets/img/bg/banner-fullwidth2.png">
+        <div class="deals_banner_bg" data-bgimg="{{ asset('assets/img/bg/Banner_full2.png')}}">
             <div class="container">
                 <div class="deals_banner_inner">
                     <div class="row">
                         <div class="col-lg-6 offset-lg-6 col-md-6 offset-md-6">
                             <div class="banner_discount_text deals_banner_text ">
                                 <h3><span>30% </span> Sale Off</h3>
-                                <h2>Deal of the day</h2>
+                                <h2>Grand Opening Luvverys Bakery</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                                     eiusmod <br> tempor
                                     incididunt ut labore et dolore magna</p>
@@ -248,9 +248,6 @@
                                 <a class="btn btn-link" href="{{ route('shop') }}">Shop Now</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="add_discount">
-                        <img src="assets/img/others/add-discount.png" alt="">
                     </div>
                 </div>
             </div>

@@ -70,7 +70,7 @@
                         <ul class="d-flex">
                             <li class="header_search"><a href="javascript:void(0)"><i class="pe-7s-search"></i></a>
                             </li>
-                            <li class="header_wishlist"><a href="{{ route('wishlist-landing') }}"><i
+                            <li class="header_wishlist"><a href="{{ route('wishlist') }}"><i
                                         class="pe-7s-like"></i></a></li>
                             <li class="shopping_cart"><a href="javascript:void(0)"><i class="pe-7s-shopbag"></i></a>
                                 <span class="item_count">{{ $cartCount ?? '0' }}</span>
@@ -131,7 +131,7 @@
             @foreach ($cartItems as $item)
                 <div class="cart_item">
                     <div class="cart_img">
-                        <a href="single-product.html"><img src="{{ asset('storage/' . $item->options->image) }}"
+                        <a href="#"><img src="{{ asset('storage/' . $item->options->image) }}"
                                 alt=""></a>
                     </div>
                     <div class="cart_info">

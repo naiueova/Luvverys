@@ -21,6 +21,10 @@ class Order extends Model
         'card_number',
         'payment_status',
         'status',
-        'shipped_date'
+        'delivered_date'
     ];
+
+    public function items(){
+        return $this->hasMany(OrderDetail::class);
+    }
 }

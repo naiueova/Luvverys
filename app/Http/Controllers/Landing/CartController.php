@@ -118,8 +118,6 @@ class CartController extends Controller
         session()->put('code', $code);
 
         $user = Auth::user();
-        $couponCodeId = $code->id;
-        $codeValue = $code->code;
         $discount = 0;
         $subTotal = Cart::instance('cart_' . $user->id)->subtotal(0, '.', '');
 
@@ -147,6 +145,8 @@ class CartController extends Controller
         ];
 
         session()->put('discountResponse', $response);
+
+        // dd(session('discountResponse'));
 
         return redirect()->back()->with('discountResponse', $response);
     }
@@ -186,10 +186,10 @@ class CartController extends Controller
         $request->validate([
             'payment_method' => 'required',
             'bank_name' => 'required_if:payment_method,transfer',
-            'card_number' => 'required_if:payment_method,transfer|numeric'
+            'card_number' => ($request->payment_method == 'transfer') ? 'required|numeric' : ''
         ], [
             'bank_name.required_if' => 'Bank name is required when payment method is transfer.',
-            'card_number.required_if' => 'Card number is required when payment method is transfer.',
+            'card_number.required' => 'Card number is required when payment method is transfer.',
             'card_number.numeric' => 'Card number must be a valid number.'
         ]);
 
@@ -200,16 +200,10 @@ class CartController extends Controller
         $subTotal = Cart::instance('cart_' . $user->id)->subtotal(0, '.', '');
 
         // Ambil nilai default untuk diskon dan discountId
-        $discount = 0;
-        $discountId = null;
-        $grandTotal = $subTotal;
-
-        // Cek apakah ada diskon di sesi
-        if (session('discountResponse') && session('discountResponse')['status']) {
-            $discount = session('discountResponse')['discount'];
-            $grandTotal = session('discountResponse')['grandTotal'];
-            $discountId = session('code')->id;
-        }
+        $discountResponse = session('discountResponse');
+        $discountId = session('code')->id ?? null;
+        $discount = $discountResponse['discount'] ?? 0;
+        $grandTotal = $discountResponse['grandTotal'] ?? $subTotal;
 
         //store order data
         $lastOrder = Order::latest()->first();
@@ -223,8 +217,8 @@ class CartController extends Controller
         $order->order_date = Carbon::now();
         $order->subtotal = $subTotal;
         $order->discount_id = $discountId;
-        $order->discount = $discount;
-        $order->total_amount = $grandTotal;
+        $order->discount = $request->discount;
+        $order->total_amount = $request->total_amount;
         $order->payment_method = $request->payment_method;
         if ($request->payment_method == 'transfer') {
             $order->payment_status = 'paid';
@@ -233,6 +227,7 @@ class CartController extends Controller
         } else {
             $order->payment_status = 'not_paid';
         }
+
         $order->status = 'pending';
         $order->save();
 

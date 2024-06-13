@@ -18,31 +18,42 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3 ms-3 me-3">
-                        <label for="name" class="form-label">Name</label>
-                        <select class="form-select" name="customer_id" id="customer_id">
-                            <option @if (isset($customer_id)) selected @endif value="default">
-                                Choose the customer name
-                            </option>
+                        <label for="order_no" class="form-label">Order Number</label>
+                        <input class="form-control" id="order_no" name="order_no" type="text"
+                            value="{{ $orders->order_no }}" disabled>
+                    </div>
 
-                            @foreach ($customers as $data)
-                            <option value="{{ $data->id }}"
-                                {{ $data->id == $orders->customer_id ? 'selected' : '' }}>
-                                {{ $data->name }}
-                            </option>
-                            @endforeach
-                        </select>
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="first_name" class="form-label">Name</label>
+                        <input class="form-control" id="first_name" name="first_name" type="text"
+                            value="{{ $orders->first_name . ' ' . $orders->last_name }}" disabled>
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="order_date" class="form-label">Order Date</label>
                         <input class="form-control" id="order_date" name="order_date" type="datetime-local"
-                            placeholder="Order Date" aria-label="Order Date" value="{{ $orders->order_date }}">
+                            placeholder="Order Date" aria-label="Order Date" value="{{ $orders->order_date }}" disabled>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="address" class="form-label">Product</label>
+                        <input class="form-control" id="address" name="address" type="text"
+                        @foreach ($orders->items as $item) value="{{ $item->product->product_name }} x {{ $item->quantity }}" @endforeach disabled>
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="total_amount" class="form-label">Total Amount</label>
                         <input class="form-control" id="total_amount" name="total_amount" type="text" placeholder="Total Amount"
-                            aria-label="Total Amount" value="{{ $orders->total_amount }}">
+                            aria-label="Total Amount" value="{{ $orders->total_amount }}" disabled>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="payment_status">Payment Status</label>
+                        <select class="form-select" aria-label="Default select example" name="payment_status" id="payment_status">
+                            <option selected value="default">Select Payment Status</option>
+                            <option value="not_paid" {{ $orders->payment_status == 'not_paid' ? 'selected' : '' }}>Not Paid</option>
+                            <option value="paid" {{ $orders->payment_status == 'paid' ? 'selected' : '' }}>Paid</option>
+                        </select>
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
@@ -50,10 +61,16 @@
                         <select class="form-select" aria-label="Default select example" name="status" id="status">
                             <option selected value="default">Select Status</option>
                             <option value="pending" {{ $orders->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="processing" {{ $orders->status == 'processing' ? 'selected' : '' }}>Processing</option>
-                            <option value="completed" {{ $orders->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                            <option value="shipped" {{ $orders->status == 'shipped' ? 'selected' : '' }}>Shipped</option>
+                            <option value="delivered" {{ $orders->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
                             <option value="cancelled" {{ $orders->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                         </select>
+                    </div>
+
+                    <div class="mb-3 ms-3 me-3">
+                        <label for="delivered_date" class="form-label">Delivered Date</label>
+                        <input class="form-control" id="delivered_date" name="delivered_date" type="datetime-local"
+                            placeholder="Delivered Date" aria-label="Delivered Date" value="{{ $orders->delivered_date }}">
                     </div>
 
                     <div class="row ms-3 me-3 text-right justify-content-end">
@@ -73,24 +90,16 @@
     <script>
         const btnSave = document.getElementById("save")
         const form = document.getElementById("frmOrder")
-        const ci = document.getElementById("customer_id")
-        const od = document.getElementById("order_date")
-        const ta = document.getElementById("total_amount")
+        const ps = document.getElementById("payment_status")
         const st = document.getElementById("status")
 
         function save() {
-            if (ci.value === "default") {
-                ci.focus()
-                swal("Incomplete Data", "Name is required!", "error")
-            } else if (od.value === "") {
-                od.focus()
-                swal("Incomplete Data", "order Date is required!", "error")
-            } else if (ta.value === "") {
-                ta.focus()
-                swal("Incomplete Data", "Total Amount must be selected!", "error")
+            if (ps.value === "default") {
+                ps.focus()
+                swal("Incomplete Data", "Payment Status is required!", "error")
             } else if (st.value === "default") {
                 st.focus()
-                swal("Incomplete Data", "Status must be selected!", "error")
+                swal("Incomplete Data", "Status is required!", "error")
             } else {
                 form.submit();
             }

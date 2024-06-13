@@ -1,7 +1,7 @@
 @extends('landing-page.landing.main')
 @section('content')
     <!-- breadcrumbs area start -->
-    <div class="breadcrumbs_aree breadcrumbs_bg mb-100" data-bgimg="{{asset('assets/img/others/Breadcrumbs-bg-revisi.png')}}">
+    <div class="breadcrumbs_aree breadcrumbs_bg mb-100" data-bgimg="{{asset('assets/img/others/Breadcrumbs-bg_1920x503.png')}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-6">
                         <div class="contact_info_content">
-                            <h2>We Are Here Fro Help You!
+                            <h2>We Are Here For Help You!
                                 Please Contact Us.</h2>
                             <div class="contact_search">
                                 <form action="#">
@@ -34,17 +34,16 @@
                                 </form>
                             </div>
                             <div class="contact_info_details mb-45">
-                                <h3>Store In New Work</h3>
+                                <h3>Store In Cibinong</h3>
                                 <p>Your address goes here.</p>
                                 <p><a href="tel:0123456789">0123456789</a></p>
-                                <p><a href="#">demo@example.com</a></p>
-                                <p><a href="#">www.example.com</a></p>
+                                <p><a href="#">luvverys@gmail.com</a></p>
                                 <span>See On The Map</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6">
-                        <div class="contact_form" data-bgimg="assets/img/others/contact-form-bg-shape.png">
+                        <div class="contact_form" data-bgimg="{{ asset('assets/img/others/contact-form-bg-shape.png')}}">
                             <h2>Send A Quest</h2>
                             <form id="contact-form" action="https://whizthemes.com/mail-php/other/mail.php">
                                 <div class="form_input">

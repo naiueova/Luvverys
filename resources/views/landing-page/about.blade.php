@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="text-center">
-                        <img src="{{asset('assets/img/others/example.png')}}" class="rounded" alt="...">
+                        <img src="{{asset('assets/img/others/Banner3_luvverys(1).png')}}" class="rounded" alt="...">
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="text-center">
-                        <img src="{{asset('assets/img/others/example.png')}}" class="rounded" alt="...">
+                        <img src="{{asset('assets/img/others/Banner3_luvverys.png')}}" class="rounded" alt="...">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6" style="text-align: left;">

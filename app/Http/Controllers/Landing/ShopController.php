@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategories;
+use App\Models\ProductReview;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -47,9 +51,35 @@ class ShopController extends Controller
      */
     public function product_detail($slug)
     {
-        $productDetails = Product::where('slug', $slug)->get();
-        return view('landing-page.product-detail', compact('productDetails'));
+        $productDetails = Product::where('slug', $slug)->firstOrFail();
+        $reviews = ProductReview::where('product_id', $productDetails->id)->get();
+        return view('landing-page.product-detail', compact('productDetails', 'reviews'));
     }
+
+
+public function storeReview(Request $request, $productId)
+{
+    $this->validate($request, [
+        'rating' => 'required|integer|min:1|max:5',
+        'comment' => 'required|string',
+    ]);
+
+    $user = Auth::user();
+
+    // dd($user->id);
+
+    $rating = ProductReview::create([
+        'user_id' => $user->id,
+        'product_id' => $productId,
+        'rating' => $request->rating,
+        'comment' => $request->comment,
+    ]);
+
+    // dd($rating);
+
+    return redirect()->back()->with('success', 'Review submitted successfully!');
+}
+
 
     /**
      * Store a newly created resource in storage.

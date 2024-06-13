@@ -19,8 +19,9 @@ class LandingController extends Controller
         ->sortByDesc('id')
         ->take(8);
 
+        // $productCategories = ProductCategories::all();
+        $productCategories = ProductCategories::withCount('products')->get();
 
-        $productCategories = ProductCategories::all();
 
         return view('landing-page.index', compact('products', 'productCategories'));
     }

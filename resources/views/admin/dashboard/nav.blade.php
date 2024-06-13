@@ -44,10 +44,7 @@
                     <div class="nav-link-icon"><i class="fa-solid fa-address-card"></i></div>
                     Customer
                 </a>
-                <a class="nav-link {{request()->routeIs('order-detail.*') ? 'active' : ''}}" href="{{ route('order-detail.index') }}">
-                    <div class="nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-                    Order Detail
-                </a>
+
                 <a class="nav-link {{request()->routeIs('order.*') ? 'active' : ''}}" href="{{ route('order.index') }}">
                     <div class="nav-link-icon"><i class="fa-solid fa-receipt"></i></div>
                     Order

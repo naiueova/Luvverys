@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('card_number')->nullable();
             $table->enum('payment_status',['paid','not_paid'])->default('not_paid');
             $table->enum('status', ['pending', 'shipped', 'delivered','cancelled'])->default('pending');
-            $table->datetime('shipped_date')->nullable();
+            $table->datetime('delivered_date')->nullable();
             $table->timestamps();
         });
     }

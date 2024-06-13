@@ -13,4 +13,11 @@ class ProductCategories extends Model
         'image_url',
         'slug'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'product_category_id');
+    }
 }
+
+

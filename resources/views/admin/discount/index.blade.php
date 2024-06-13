@@ -51,7 +51,10 @@
                                     {{ $data->type }}
                                 </td>
                                 <td>
-                                    {{ $data->discount_amount }}
+                                    @if ($data->type == 'percentage')
+                                        {{ $data->discount_amount }}%
+                                    @else
+                                        Rp {{ number_format($data->discount_amount, 0, ',', '.') }}                                    @endif
                                 </td>
                                 <td>
                                     {{ $data->start_date }}

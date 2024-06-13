@@ -19,42 +19,42 @@
                     @method('PUT')
                     <div class="mb-3 ms-3 me-3">
                         <label for="first_name" class="form-label">Fisrt Name</label>
-                        <input class="form-control" id="first_name" name="first_name" type="text" placeholder="First Name" aria-label="Fisrt Name">
+                        <input class="form-control" id="first_name" name="first_name" type="text" placeholder="First Name" aria-label="Fisrt Name" value="{{ $customers->first_name }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input class="form-control" id="last_name" name="last_name" type="text" placeholder=" Last Name" aria-label="Last Name">
+                        <input class="form-control" id="last_name" name="last_name" type="text" placeholder=" Last Name" aria-label="Last Name" value="{{ $customers->last_name }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="email" class="form-label">Email</label>
-                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" aria-label="Email">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" aria-label="Email" value="{{ $customers->email }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="phone_number" class="form-label">Phone Number</label>
-                        <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Phone Number" aria-label="Phone Number">
+                        <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Phone Number" aria-label="Phone Number" value="{{ $customers->phone_number }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="address" class="form-label">Address</label>
-                        <input class="form-control" id="address" name="address" type="text" placeholder="Address" aria-label="Address">
+                        <input class="form-control" id="address" name="address" type="text" placeholder="Address" aria-label="Address" value="{{ $customers->address }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="city" class="form-label">City</label>
-                        <input class="form-control" id="city" name="city" type="text" placeholder="City" aria-label="City">
+                        <input class="form-control" id="city" name="city" type="text" placeholder="City" aria-label="City" value="{{ $customers->city }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
                         <label for="state" class="form-label">State</label>
-                        <input class="form-control" id="state" name="state" type="text" placeholder="State" aria-label="State">
+                        <input class="form-control" id="state" name="state" type="text" placeholder="State" aria-label="State" value="{{ $customers->state }}">
                     </div>
 
                     <div class="mb-3 ms-3 me-3">
-                        <label for="zip_code" class="form-label">Zip Code</label>
-                        <input class="form-control" id="zip_code" name="zip_code" type="number" placeholder="Zip Code" aria-label="Zip Code">
+                        <label for="zip" class="form-label">Zip Code</label>
+                        <input class="form-control" id="zip" name="zip" type="number" placeholder="Zip Code" aria-label="Zip Code" value="{{ $customers->zip }}">
                     </div>
 
                     <div class="row ms-3 me-3 text-right justify-content-end">
@@ -81,9 +81,7 @@
         const addr = document.getElementById("address")
         const city = document.getElementById("city")
         const state = document.getElementById("state")
-        const zip = document.getElementById("zip_code")
-        const notes = document.getElementById("notes")
-        // let message = ""
+        const zip = document.getElementById("zip")
 
         function save() {
             if (fnm.value == "") {

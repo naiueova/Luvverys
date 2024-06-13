@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\Customer;
+use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -14,52 +15,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.order.index', [
-            'orders' => DB::table('vworder')->get()
-        ]);
+        $orders = Order::latest('orders.created_at')
+            ->select('orders.*', 'customers.first_name', 'customers.last_name', 'customers.email')
+            ->leftJoin('customers', 'customers.id', 'orders.customer_id')
+            ->with('items.product')
+            ->get();
+
+        return view('admin.order.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.order.create', [
-            'customers' => Customer::all()
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $data = $request->only([
-            'customer_id',
-            'order_date',
-            'total_amount',
-            'status'
-        ]);
-        Order::create($data);
-        return redirect()->route('order.index')->with('message', 'The new order data has been sucessfully saved!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        $orders = Order::find($id);
-        $customers = Customer::all();
-        return view('admin.order.edit', compact('orders', 'customers'));
+        $orders = Order::select('orders.*', 'customers.first_name', 'customers.last_name', 'customers.email')->where('orders.id', $id)->leftJoin('customers', 'customers.id', 'orders.customer_id')->first();
+        return view('admin.order.edit', compact('orders'));
     }
 
     /**
@@ -67,10 +35,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = Order::find($id);
-        $data->update($request->all());
-        $data->save();
-        return redirect()->route('order.index')->with('message', 'Order data with the name '. $request->name . ' updated sucessfully saved!');
+        $order = Order::find($id);
+        $order->payment_status = $request->payment_status;
+        $order->status = $request->status;
+        $order->delivered_date = $request->delivered_date;
+        $order->save();
+
+        return redirect()->route('order.index')->with('message', 'Order data with the name ' . $request->name . ' updated sucessfully saved!');
     }
 
     /**

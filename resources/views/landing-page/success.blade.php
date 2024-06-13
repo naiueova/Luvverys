@@ -12,7 +12,7 @@
                         you
                         can go back to the homepage following the button below!</p>
                     <div class="button-wrap">
-                        <a class="btn btn-success btn-lg rounded-0" href="{{ route('home') }}">Back to home</a>
+                        <a class="btn btn-success btn-lg rounded-0" href="{{ route('account.orders') }}">Back to home</a>
                     </div>
                 </div>
             </div>

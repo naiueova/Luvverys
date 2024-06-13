@@ -75,14 +75,6 @@ class ProductCategoriesController extends Controller
             $data->image_url = $request->file('image_url')->store('ProductCategories/Photos');
         }
         $data->slug = $request->slug;
-        // $request->validate([
-        //     'category_name' =>
-        //     'required|unique:product_categories,category_name,'.$id,
-        //     'image_url' =>'required',
-        //     'slug' =>'required|unique:product_categories,slug,'.$id
-        // ]);
-
-        // $data->update($request->all());
         $data->save();
         return redirect()->route('product-categories.index')->with('message', 'Product category data with the name '. $request->category_name . ' updated sucessfully saved!');
     }
@@ -95,10 +87,6 @@ class ProductCategoriesController extends Controller
         $data = ProductCategories::find($id);
         if($data){
             $delete = $data->delete();
-            // if ($data->image_url != null) {
-            //     if($delete)
-            //     unlink("storage/".$data->image_url);
-            // }
             if($delete)
                 unlink("storage/".$data->image_url);
         }

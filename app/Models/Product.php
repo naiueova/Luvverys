@@ -21,4 +21,9 @@ class Product extends Model
         'image5_url',
         'slug'
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

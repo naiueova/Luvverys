@@ -1,7 +1,7 @@
 @extends('landing-page.landing.main')
 @section('content')
     <!-- breadcrumbs area start -->
-    <div class="breadcrumbs_aree breadcrumbs_bg mb-110" data-bgimg="assets/img/others/breadcrumbs-bg.png">
+    <div class="breadcrumbs_aree breadcrumbs_bg mb-110" data-bgimg="{{asset('assets/img/others/Breadcrumbs-bg_1920x503.png')}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -175,12 +175,14 @@
                                             </tr>
                                             <tr class="cart-subtotal">
                                                 <th>Discount</th>
-                                                <td><span class="amount">- Rp
+                                                <td><input type="hidden" name="discount" value="{{ $discount }}">
+                                                    <span class="amount">- Rp
                                                         {{ number_format($discount, 0, ',', '.') }}</span></td>
                                             </tr>
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">Rp
+                                                <td><input type="hidden" name="total_amount" value="{{ $grandTotal }}">
+                                                    <strong><span class="amount">Rp
                                                             {{ number_format($grandTotal, 0, ',', '.') }}</span></strong>
                                                 </td>
                                             </tr>
@@ -232,7 +234,7 @@
 
                                                 <div class="mb-3 ms-3">
                                                     <label for="account-number">Account Number</label>
-                                                    <input type="text" id="card_number" name="card_number"
+                                                    <input type="number" id="card_number" name="card_number"
                                                         class="form-control" />
                                                 </div>
                                             </div>
@@ -265,32 +267,22 @@
         document.addEventListener('DOMContentLoaded', function() {
             const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
             const collapseOne = document.getElementById('collapseOne');
+            const bankNameInput = document.querySelector('select[name="bank_name"]');
+            const cardNumberInput = document.getElementById('card_number');
 
             paymentMethodInputs.forEach(input => {
                 input.addEventListener('change', function() {
                     if (this.value === 'transfer') {
                         collapseOne.classList.add('show');
+                        bankNameInput.setAttribute('required', 'required');
+                        cardNumberInput.setAttribute('required', 'required');
                     } else {
                         collapseOne.classList.remove('show');
+                        bankNameInput.removeAttribute('required');
+                        cardNumberInput.removeAttribute('required');
                     }
                 });
             });
-        });
-
-        document.querySelector('.order-button-payment input[type="submit"]').addEventListener('click', function(event) {
-            const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
-            let isChecked = false;
-
-            paymentMethods.forEach(method => {
-                if (method.checked) {
-                    isChecked = true;
-                }
-            });
-
-            if (!isChecked) {
-                event.preventDefault();
-                alert('Please select a payment method before placing your order.');
-            }
         });
     </script>
 @endsection

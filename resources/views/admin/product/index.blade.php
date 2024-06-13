@@ -47,12 +47,26 @@
                                 <td>
                                     {{ $data->category_name }}
                                 </td>
-                                <td>
-                                    {{ $data->product_name }}
-                                </td>
-                                <td>
-                                    {{ $data->description }}
-                                </td>
+
+                                @if (strlen($data->product_name) > 5)
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $data->product_name }}"
+                                        style="cursor: help">
+                                        {{ substr($data->product_name, 0, 5) . '...' }}
+                                    </td>
+                                @else
+                                    <td>{{ $data->product_name }}</td>
+                                @endif
+
+                                @if (strlen($data->description) > 5)
+                                    <td data-bs-toggle="tooltip" data-bs-placement="right"
+                                        data-bs-custom-class="custom-tooltip" title="{{ $data->description }}"
+                                        style="cursor: help">
+                                        {{ substr($data->description, 0, 5) . '...' }}
+                                    </td>
+                                @else
+                                    <td>{{ $data->description }}</td>
+                                @endif
+
                                 <td>
                                     Rp {{ number_format($data->price, 0, ',', '.') }}
                                 </td>

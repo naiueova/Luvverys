@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" type="image/png" href="{{ asset('assetss/images/favicon_luvverys.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assetss/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assetss/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assetss/css/iofrm-style.css') }}">
@@ -14,9 +15,9 @@
 <body>
     <div class="form-body" class="container-fluid">
         <div class="website-logo">
-            <a href="index.html">
+            <a href="{{ route('home') }}">
                 <div class="logo">
-                    <img class="logo-size" src="{{ asset('assetss/images/logo-light.svg') }}" alt="">
+                    <img class="logo-size" src="{{ asset('assetss/images/logo_luvverys.png') }}" alt="">
                 </div>
             </a>
         </div>

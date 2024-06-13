@@ -7,11 +7,20 @@
     // Activate feather
     feather.replace();
 
-    // Enable tooltips globally
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Enable tooltips globally
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Debug: Check if tooltips are initialized on <td> elements
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                console.log('Tooltip initialized on:', tooltipTriggerEl);
+            });
+        });
+   
 
     // Enable popovers globally
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

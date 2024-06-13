@@ -65,7 +65,6 @@ class CustomerController extends Controller
     {
         $data = Customer::find($id);
         $request->validate([
-            // 'name' => 'required|unique:customers,name,' .$id,
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
@@ -73,13 +72,13 @@ class CustomerController extends Controller
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'zip_code' => 'required',
+            'zip' => 'required',
             'notes' => 'required'
         ]);
 
         $data->update($request->all());
         $data->save();
-        return redirect()->route('customer.index')->with('message', 'Customer data with the name '. $request->name . ' updated sucessfully saved!');
+        return redirect()->route('customer.index')->with('message', 'Customer data with the name '. $request->first_name . ' updated sucessfully saved!');
     }
 
     /**

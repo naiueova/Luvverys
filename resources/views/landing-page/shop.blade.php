@@ -2,7 +2,7 @@
 @section('content')
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs_aree breadcrumbs_bg mb-100"
-        data-bgimg="{{ asset('assets/img/others/Breadcrumbs-bg-revisi.png') }}">
+        data-bgimg="{{ asset('assets/img/others/Breadcrumbs-bg_1920x503.png') }}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="widget__list wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
                             <div class="widget_banner">
-                                <img src="assets/img/others/product-sidaber-banner.png" alt="">
+                                <img src="{{asset('assets/img/others/Banner_sidebar.png')}}" alt="">
                             </div>
                         </div>
                     </div>

@@ -55,9 +55,17 @@
                                 <td>
                                     {{ $data->phone_number }}
                                 </td>
-                                <td>
-                                    {{ $data->address }}
-                                </td>
+
+                                @if (strlen($data->address) > 5)
+                                    <td data-bs-toggle="tooltip" data-bs-placement="right"
+                                        data-bs-custom-class="custom-tooltip" title="{{ $data->address }}"
+                                        style="cursor: help">
+                                        {{ substr($data->address, 0, 5) . '...' }}
+                                    </td>
+                                @else
+                                    <td>{{ $data->address }}</td>
+                                @endif
+
                                 <td>
                                     {{ $data->city }}
                                 </td>
@@ -67,9 +75,17 @@
                                 <td>
                                     {{ $data->zip }}
                                 </td>
-                                <td>
-                                    {{ $data->notes }}
-                                </td>
+                                
+                                @if (strlen($data->notes) > 5)
+                                    <td data-bs-toggle="tooltip" data-bs-placement="right"
+                                        data-bs-custom-class="custom-tooltip" title="{{ $data->notes }}"
+                                        style="cursor: help">
+                                        {{ substr($data->notes, 0, 5) . '...' }}
+                                    </td>
+                                @else
+                                    <td>{{ $data->notes }}</td>
+                                @endif
+
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div>
